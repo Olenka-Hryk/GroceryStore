@@ -13,7 +13,7 @@ import com.store.components.entity.Orders;
 import com.store.service.OrdersService;
 
 @RestController
-@RequestMapping("/flower/order")
+@RequestMapping("/store/order")
 public class OrdersController {
 	@Autowired
 	private OrdersService orderService;
