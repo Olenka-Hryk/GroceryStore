@@ -1,0 +1,5 @@
+package com.store.components.entity;
+
+public class Sale {
+
+}
