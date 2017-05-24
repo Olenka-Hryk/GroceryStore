@@ -17,8 +17,8 @@ public class OrdersService {
 		return iOrders.infoAboutAllOrder(page);
 	}
 
-	public Orders infoAboutCountOfProductById(int id) {
-		return iOrders.infoAboutCountOfProductById(id);
+	public Orders infoAboutSumOfOrderById(int id) {
+		return iOrders.infoAboutSumOfOrderById(id);
 	}
 	
 	public void addOrder(Orders order) {

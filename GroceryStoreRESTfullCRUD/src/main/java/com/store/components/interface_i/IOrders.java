@@ -6,6 +6,6 @@ import com.store.components.entity.Orders;
 public interface IOrders {
 	Collection<Orders> infoAboutAllOrder(int page);
 
-	public Orders infoAboutCountOfProductById(int id);
+	public Orders infoAboutSumOfOrderById(int id);
 	public void addOrder(Orders order);
 }
