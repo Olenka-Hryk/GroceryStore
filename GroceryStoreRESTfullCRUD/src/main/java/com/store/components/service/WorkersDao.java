@@ -28,10 +28,10 @@ public class WorkersDao implements IWorkers{
 		public Workers mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Workers worker = new Workers();
 			worker.setId(rs.getInt(1));
-			worker.setSurName(rs.getString(3));
-			worker.setName(rs.getString(2));	
-			worker.setMiddleName(rs.getString(3));
-			worker.setDateBirth(rs.getString(4));
+			worker.setSurName(rs.getString(2));
+			worker.setName(rs.getString(3));	
+			worker.setMiddleName(rs.getString(4));
+			worker.setDateBirth(rs.getString(5));
 
 			return worker;
 		}

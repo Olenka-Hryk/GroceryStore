@@ -34,8 +34,8 @@ public class ChequeController {
 	 * @return
 	 */
 	@RequestMapping(value = "/view_amount/{id}", method = RequestMethod.GET)
-	public Cheque infoAboutAmountOfOrderById(@PathVariable("page") int page) {
-		return chequeService.infoAboutAmountOfOrderById(page);
+	public Cheque infoAboutAmountOfOrderById(@PathVariable("id") int id) {
+		return chequeService.infoAboutAmountOfOrderById(id);
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)

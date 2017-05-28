@@ -34,8 +34,8 @@ public class OrdersController {
 	 * @return
 	 */
 	@RequestMapping(value = "/view_summa/{id}", method = RequestMethod.GET)
-	public Orders infoAboutSumOfOrderById(@PathVariable("page") int page) {
-		return orderService.infoAboutSumOfOrderById(page);
+	public Orders infoAboutSumOfOrderById(@PathVariable("id") int id) {
+		return orderService.infoAboutSumOfOrderById(id);
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)

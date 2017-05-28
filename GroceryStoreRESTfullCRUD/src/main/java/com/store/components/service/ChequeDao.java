@@ -31,9 +31,9 @@ public class ChequeDao implements ICheque{
 			cheque.setIdReserve(rs.getInt(2));
 			cheque.setIdOrder(rs.getInt(3));
 			cheque.setIdCustomer(rs.getInt(4));
-			cheque.setIdSale(rs.getInt(4));
-			cheque.setAmount(rs.getInt(4));
-			cheque.setOrderDate(rs.getString(4));
+			cheque.setIdSale(rs.getInt(5));
+			cheque.setAmount(rs.getInt(6));
+			cheque.setOrderDate(rs.getString(7));
 
 			return cheque;
 		}

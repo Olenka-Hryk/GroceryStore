@@ -28,11 +28,11 @@ public class SaleDao implements ISale {
 		public Sale mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Sale sale = new Sale();
 			sale.setId(rs.getInt(1));
-			sale.setIdProduct(rs.getInt(1));
+			sale.setIdProduct(rs.getInt(2));
 			sale.setPercent(rs.getInt(3));
-			sale.setNameSale(rs.getString(5));
-			sale.setDateStart(rs.getString(4));
-			sale.setDateFinish(rs.getString(4));
+			sale.setNameSale(rs.getString(4));
+			sale.setDateStart(rs.getString(5));
+			sale.setDateFinish(rs.getString(6));
 			
 			return sale;
 		}

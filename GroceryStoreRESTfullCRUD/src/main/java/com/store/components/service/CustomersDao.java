@@ -28,13 +28,13 @@ public class CustomersDao implements ICustomers{
 		public Customers mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Customers customer = new Customers();
 			customer.setId(rs.getInt(1));
-			customer.setSurName(rs.getString(3));
-			customer.setName(rs.getString(2));	
-			customer.setMiddleName(rs.getString(3));
-			customer.setDateBirth(rs.getString(4));
-			customer.setPhoneNumber(rs.getString(8));
-			customer.setNumberCard(rs.getString(10));
-			customer.setDiscountSale(rs.getInt(4));
+			customer.setSurName(rs.getString(2));
+			customer.setName(rs.getString(3));	
+			customer.setMiddleName(rs.getString(4));
+			customer.setDateBirth(rs.getString(5));
+			customer.setPhoneNumber(rs.getString(6));
+			customer.setNumberCard(rs.getString(7));
+			customer.setDiscountSale(rs.getInt(8));
 
 			return customer;
 		}

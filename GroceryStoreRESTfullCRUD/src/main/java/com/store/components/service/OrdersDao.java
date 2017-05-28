@@ -31,7 +31,7 @@ public class OrdersDao implements IOrders{
 			order.setIdSale(rs.getInt(2));
 			order.setIdReserve(rs.getInt(3));
 			order.setIdWorker(rs.getInt(4));
-			order.setTotalSum(rs.getInt(4));
+			order.setTotalSum(rs.getInt(5));
 
 			return order;
 		}

@@ -28,8 +28,8 @@ public class ProductsDao implements IProducts{
 		public Products mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Products product = new Products();
 			product.setId(rs.getInt(1));
-			product.setIdSubtype(rs.getInt(1));
-			product.setName(rs.getString(4));
+			product.setIdSubtype(rs.getInt(2));
+			product.setName(rs.getString(3));
 			product.setFirm(rs.getString(4));
 			
 			return product;

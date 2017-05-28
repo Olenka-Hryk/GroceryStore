@@ -28,7 +28,7 @@ public class SubtypesDao implements ISubtypes{
 		public Subtypes mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Subtypes subtype = new Subtypes();
 			subtype.setId(rs.getInt(1));
-			subtype.setName(rs.getString(3));
+			subtype.setName(rs.getString(2));
 
 			return subtype;
 		}

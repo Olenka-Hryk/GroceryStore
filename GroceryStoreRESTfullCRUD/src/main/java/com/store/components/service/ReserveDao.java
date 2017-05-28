@@ -40,8 +40,8 @@ public class ReserveDao implements IReserve {
 			reserve.setExpirationDate(rs.getString(4));
 			reserve.setQuantity(rs.getFloat(5));
 			reserve.setPrice(rs.getFloat(6));
-			reserve.setBarCode(rs.getString(6));
-			reserve.setProductSize(rs.getFloat(6));
+			reserve.setBarCode(rs.getString(7));
+			reserve.setProductSize(rs.getFloat(8));
 			
 			return reserve;
 		}

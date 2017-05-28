@@ -28,7 +28,7 @@ public class StoreDao implements IStore{
 		public Store mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Store store = new Store();
 			store.setId(rs.getInt(1));
-			store.setAddress(rs.getString(6));
+			store.setAddress(rs.getString(2));
 
 			return store;
 		}
@@ -52,14 +52,14 @@ public class StoreDao implements IStore{
 	 * @return store
 	 */
 	public Collection<Store> infoAboutStore(int page) {
-		page *= 3;
-		final String SQL = "SELECT * FROM Store LIMIT 3 offset ?";
+		page *= 2;
+		final String SQL = "SELECT * FROM Store LIMIT 2 offset ?";
 		List<Store> store = jdbc.query(SQL, new workingWithRowMap(), page);
 		return store;
 	}
 
 	public void addStore(Store store) {
-		final String SQL = "INSERT INTO Store (idStore, Address) values (?, ?) ";
+		final String SQL = "INSERT INTO Store (Address) values (?) ";
 		final String address = store.getAddress();
 
 		jdbc.update(SQL, new Object[] { address });

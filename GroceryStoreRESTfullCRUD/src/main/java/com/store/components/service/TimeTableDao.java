@@ -28,8 +28,8 @@ public class TimeTableDao implements ITimeTable {
 		public TimeTable mapRow(ResultSet rs, int rowNum) throws SQLException {
 			TimeTable timetable = new TimeTable();
 			timetable.setId(rs.getInt(1));
-			timetable.setIdWorker(rs.getInt(1));
-			timetable.setIdStore(rs.getInt(1));
+			timetable.setIdWorker(rs.getInt(2));
+			timetable.setIdStore(rs.getInt(3));
 			timetable.setWorkDate(rs.getString(4));
 			timetable.setSalary(rs.getInt(5));
 
