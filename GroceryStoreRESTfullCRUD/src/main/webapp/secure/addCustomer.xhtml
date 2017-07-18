@@ -1,0 +1,42 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>New Customer</title>
+</h:head>
+<h:body>
+	<h:form method="POST">
+
+		<h:panelGrid colums="2" cellpadding="2" cellspacing="2">
+			<h:outputText value="Surname customer"></h:outputText>
+			<h:inputText id="surName" value="#{customers.surName}"></h:inputText>
+			<h:outputText value="Name customer"></h:outputText>
+			<h:inputText id="name" value="#{customers.name}"></h:inputText>
+			<h:outputText value="Middlename customer"></h:outputText>
+			<h:inputText id="middleName"
+				value="#{customers.middleName}"></h:inputText>
+			<h:outputText value="Date of birth customer"></h:outputText>
+			<h:inputText id="dateBirth" value="#{customers.dateBirth}"></h:inputText>
+			<h:outputText value="Phonenumber customer"></h:outputText>
+			<h:inputText id="phoneNumber"
+				value="#{customers.phoneNumber}"></h:inputText>
+			<h:outputText value="Number card customer"></h:outputText>
+			<h:inputText id="numberCard"
+				value="#{customers.numberCard}"></h:inputText>
+			<h:outputText value="Discount sale customer"></h:outputText>
+			<h:inputText id="discountSale"
+				value="#{customers.discountSale}"></h:inputText>
+			
+			<p:remoteCommand name="addCustomer" update="msgs"
+				actionListener="#{customersManagedBean.addCustomer}" />
+			<p:growl id="msgs" showDetail="true" />
+			
+			<h:commandButton value="Save" type="button" onclick="addCustomer()" ajax="false"></h:commandButton>			
+
+		</h:panelGrid>
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</h:form>
+</h:body>
+</html>
