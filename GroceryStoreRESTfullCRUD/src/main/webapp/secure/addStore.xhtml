@@ -1,0 +1,25 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>New Store</title>
+</h:head>
+<h:body>
+	<h:form action="${request.contextPath}/appLogout" method="POST">
+
+		<h:panelGrid colums="2" cellpadding="2" cellspacing="2">
+			<h:outputText value="Address store:"></h:outputText>
+			<h:inputText id="address" value="#{store.address}"></h:inputText>
+			
+			<p:remoteCommand name="addStore" update="msgs"
+				actionListener="#{storeManagedBean.addStore}" />
+			<p:growl id="msgs" showDetail="true" />
+			<h:commandButton value="Save" type="button" onclick="addStore()" ajax="false"></h:commandButton>			
+
+		</h:panelGrid>
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</h:form>
+</h:body>
+</html>

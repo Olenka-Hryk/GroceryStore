@@ -1,0 +1,22 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Authorization</title>
+</h:head>
+<h:body>
+	<h3>Enter to the personal account:</h3>
+	<font color="red"> <h:outputLabel
+			value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
+	</font>
+	<form action="${request.contextPath}/appLogin" method="POST">
+		<h:outputLabel value="Enter user name:" />
+		<input type="text" name="app_username" /><br /> <br />
+		<h:outputLabel value="Enter password:" />
+		<input type="password" name="app_password" /> <br /> <br />
+	    <input type="submit" value="Login" />
+	    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	</form>
+</h:body>
+</html>
