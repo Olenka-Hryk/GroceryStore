@@ -1,0 +1,35 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>New Cheque</title>
+</h:head>
+<h:body>
+	<h:form action="${request.contextPath}/appLogout" method="POST">
+
+		<h:panelGrid colums="2" cellpadding="2" cellspacing="2">
+			<h:outputText value="Id reserve"></h:outputText>
+			<h:inputText id="idReserve" value="#{cheque.idReserve}"></h:inputText>
+			<h:outputText value="Id order"></h:outputText>
+			<h:inputText id="idOrder" value="#{cheque.idOrder}"></h:inputText>
+			<h:outputText value="Id customer"></h:outputText>
+			<h:inputText id="idCustomer"
+				value="#{cheque.idCustomer}"></h:inputText>
+			<h:outputText value="Id sale"></h:outputText>
+			<h:inputText id="idSale" value="#{cheque.idSale}"></h:inputText>
+			<h:outputText value="Amount"></h:outputText>
+			<h:inputText id="amount"
+				value="#{cheque.amount}"></h:inputText>
+			
+			<p:remoteCommand name="addCheque" update="msgs"
+				actionListener="#{chequeManagedBean.addCheque}" />
+			<p:growl id="msgs" showDetail="true" />
+			<h:commandButton value="Save" type="button" onclick="addCheque()" ajax="false"></h:commandButton>			
+
+		</h:panelGrid>
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</h:form>
+</h:body>
+</html>

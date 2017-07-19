@@ -1,0 +1,41 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>New Reserve</title>
+</h:head>
+<h:body>
+	<h:form action="${request.contextPath}/appLogout" method="POST">
+
+		<h:panelGrid colums="2" cellpadding="2" cellspacing="2">
+			<h:outputText value="Id store"></h:outputText>
+			<h:inputText id="idStore" value="#{reserve.idStore}"></h:inputText>
+			<h:outputText value="Id product"></h:outputText>
+			<h:inputText id="idProduct" value="#{reserve.idProduct}"></h:inputText>
+			<h:outputText value="Expiration date"></h:outputText>
+			<h:inputText id="expirationDate"
+				value="#{reserve.expirationDate}"></h:inputText>
+			<h:outputText value="Quantity"></h:outputText>
+			<h:inputText id="quantity" value="#{reserve.quantity}"></h:inputText>
+			<h:outputText value="Price"></h:outputText>
+			<h:inputText id="price"
+				value="#{reserve.price}"></h:inputText>
+			<h:outputText value="BarCode"></h:outputText>
+			<h:inputText id="barCode"
+				value="#{reserve.barCode}"></h:inputText>
+			<h:outputText value="Product size"></h:outputText>
+			<h:inputText id="productSize"
+				value="#{reserve.productSize}"></h:inputText>
+			
+			<p:remoteCommand name="addReserve" update="msgs"
+				actionListener="#{reserveManagedBean.addReserve}" />
+			<p:growl id="msgs" showDetail="true" />
+			<h:commandButton value="Save" type="button" onclick="addReserve()" ajax="false"></h:commandButton>			
+
+		</h:panelGrid>
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</h:form>
+</h:body>
+</html>
