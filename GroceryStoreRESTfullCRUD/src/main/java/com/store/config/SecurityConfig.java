@@ -8,6 +8,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	/*
+	 * Override this method to configure HttpSecurity.
+	 *  Here we configure custom login page, URL to validate username and password, logout URL etc. 
+	*/
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().
@@ -23,8 +28,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		logoutSuccessUrl("/customLogin.xhtml");		
 	} 
 	
+	/*
+	 * Using AuthenticationManagerBuilder here we will perform in-memory authentication by creating a user with a role.
+	 */
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().withUser("root").password("123456").roles("ADMIN");
 	}	
 }  
+
