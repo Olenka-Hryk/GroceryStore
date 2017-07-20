@@ -1,37 +1,63 @@
-buildscript {
-	ext {
-		springBootVersion = '2.0.0.BUILD-SNAPSHOT'
-	}
-	repositories {
-		mavenCentral()
-		maven { url "https://repo.spring.io/snapshot" }
-		maven { url "https://repo.spring.io/milestone" }
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
-}
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
 
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+archivesBaseName = 'GROCERY-STORE'
+version = '1' 
 
 repositories {
-	mavenCentral()
-	maven { url "https://repo.spring.io/snapshot" }
-	maven { url "https://repo.spring.io/milestone" }
-}
-
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+    maven { url "http://repository.primefaces.org" }
+ }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-jdbc')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-web-services')
-	runtime('mysql:mysql-connector-java')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-}
+	compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.2'
+	compile group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.1'
+	compile group: 'javax.servlet.jsp.jstl', name: 'jstl', version: '1.2'
+	compile group: 'org.glassfish.web', name: 'el-impl', version: '2.2'
+	compile group: 'org.glassfish', name: 'javax.faces', version:'2.2.11'
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.4.RELEASE'
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.4.RELEASE'
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '1.5.4.RELEASE'
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '1.5.4.RELEASE'
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '1.5.4.RELEASE'
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '1.5.4.RELEASE'
+	
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-test
+	testCompile group: 'org.springframework.boot', name: 'spring-boot-test', version: '1.5.4.RELEASE'
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
+	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.4.RELEASE'
+	 
+	// https://mvnrepository.com/artifact/javax.servlet/jstl
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+	  
+    compile 'com.sun.faces:jsf-api:2.2.13'
+    compile 'com.sun.faces:jsf-impl:2.2.13'
+    
+    compile group: 'org.primefaces', name: 'primefaces', version:'5.1'  
+	compile group: 'org.primefaces.themes', name: 'bootstrap', version: '1.0.10'
+        
+    compile 'javax.enterprise:cdi-api:1.2'
+    compile 'org.mockito:mockito-core:2.5.4'
+    compile group: 'javax.ejb', name: 'javax.ejb-api', version: '3.2'
+    
+    runtime("mysql:mysql-connector-java:5.1.6")
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.25'
+       
+    
+} 
