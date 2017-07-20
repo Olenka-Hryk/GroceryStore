@@ -2,7 +2,6 @@ package com.store.components.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,7 @@ public class ChequeDao implements ICheque{
 		}
 	}
 	
-	public Collection<Cheque> infoAboutAllCheque(int page) {
+	public List<Cheque> infoAboutAllCheque(int page) {
 		page *= 3;
 		final String SQL = "SELECT * FROM Cheque LIMIT 3 offset ?";
 		List<Cheque> cheque = jdbc.query(SQL, new workingWithRowMap(), page);
@@ -60,15 +59,6 @@ public class ChequeDao implements ICheque{
 	
 	public void addCheque(Cheque cheque) {
 		final String SQL = "INSERT INTO Cheque (idReserve, idOrder, idCustomer, idSale, Amount, OrderDate) values (?, ?, ?, ?, ?, ?) ";
-		final int idReserve = cheque.getIdReserve();
-		final int idOrder = cheque.getIdOrder();	
-		final int idCustomer = cheque.getIdCustomer();
-		final int idSale = cheque.getIdSale();
-		final float amount = cheque.getAmount();
-		final String orderDate = cheque.getOrderDate();
-
-		jdbc.update(SQL, new Object[] { idReserve, idOrder, idCustomer, idSale, amount, orderDate });
+		jdbc.update(SQL,cheque.getIdReserve(), cheque.getIdOrder(), cheque.getIdCustomer(), cheque.getIdSale(), cheque.getAmount(), cheque.getOrderDate());
 	}
-
-
 }
