@@ -1,7 +1,8 @@
 package com.connection;
 
 import java.io.Serializable;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
@@ -15,6 +16,7 @@ import javax.transaction.UserTransaction;
 public class Connection implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+    private Logger  logger;
 
 	/**
 	 * Get the user transaction by JNDI
@@ -22,34 +24,33 @@ public class Connection implements Serializable {
 	 * @return the user transaction
 	 */
 	public UserTransaction getUserTransaction() {
-		UserTransaction ut = null;
+		UserTransaction userTransaction = null;
 		try {
 			Context c = new InitialContext();
-			ut = (UserTransaction) c.lookup("java:comp/UserTransaction");
-		} catch (Exception e) {
-			e.printStackTrace();
+			userTransaction = (UserTransaction) c.lookup("java:comp/UserTransaction");
+		} catch (Exception exception) {
+			logger.log(Level.SEVERE, exception.getMessage(), exception);
 		}
 
-		return ut;
+		return userTransaction;
 	}
 	
 	/**
-	 * Get the EntityManayger by JNDI
+	 * Get the EntityManager by JNDI
 	 * 
 	 * @return the entity manager
 	 */
 	public EntityManager getEntityManager() {
-		EntityManager em = null;
+		EntityManager entityManager = null;
 
 		try {
 			Context initCtx = new InitialContext();
-			// The JSFPU must be written in the web.xml
-			em = (EntityManager) initCtx.lookup("java:comp/env/JSFPU");
-		} catch (Exception e) {
-			e.printStackTrace();
+			entityManager = (EntityManager) initCtx.lookup("java:comp/env/JSFPU");
+		} catch (Exception exception) {
+			logger.log(Level.SEVERE, exception.getMessage(), exception);
 		}
 
-		return em;
+		return entityManager;
 	}
 
 	public void begin() throws NotSupportedException, SystemException {
