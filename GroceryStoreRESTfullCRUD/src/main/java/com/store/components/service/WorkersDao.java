@@ -2,7 +2,6 @@ package com.store.components.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +53,7 @@ public class WorkersDao implements IWorkers{
 	 * @param page
 	 * @return workers
 	 */
-	public Collection<Workers> infoAboutWorker(int page) {
+	public List<Workers> infoAboutWorker(int page) {
 		page *= 3;
 		final String SQL = "SELECT * FROM Workers LIMIT 3 offset ?";
 		List<Workers> workers = jdbc.query(SQL, new workingWithRowMap(), page);
@@ -63,12 +62,8 @@ public class WorkersDao implements IWorkers{
 
 	public void addWorker(Workers worker) {
 		final String SQL = "INSERT INTO Workers (SurnameWorker, NameWorker, MiddleNameWorker, DateOfBirthWorker) values (?, ?, ?, ?) ";
-		final String surName = worker.getSurName();
-		final String name = worker.getName();	
-		final String middleName = worker.getMiddleName();
-		final String dateBirth = worker.getDateBirth();
 
-		jdbc.update(SQL, new Object[] { surName, name, middleName, dateBirth });
+		jdbc.update(SQL, worker.getSurName(), worker.getName(), worker.getMiddleName(), worker.getDateBirth());
 	}
 
 }
