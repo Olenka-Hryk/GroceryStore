@@ -34,9 +34,9 @@ public class StoreController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/information/{page}", method = RequestMethod.GET)
-	public Collection<Store> infoAboutStore(@PathVariable("page") int page) {
-		return storeService.infoAboutStore(page);
+	@RequestMapping(value = "/information/all", method = RequestMethod.GET)
+	public Collection<Store> infoAboutAllStore() {
+		return storeService.infoAboutAllStore();
 	}
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
