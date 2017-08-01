@@ -33,7 +33,7 @@ public class CustomersManagedBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		List<Customers> customers = getCustomersService().infoAboutCustomer(0);
+		List<Customers> customers = getCustomersService().infoAboutAllCustomer();
 		customersLazyModel = new CustomersLazyList(customers);
 	}
 
