@@ -1,6 +1,6 @@
 package com.store.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +16,8 @@ public class ReserveService {
 	public Reserve searchByIdProduct(int id) {
 		return iReserve.searchByIdProduct(id);
 	}
-	public Collection<Reserve> infoAboutProduct(int page) {
-		return iReserve.infoAboutProduct(page);
+	public List<Reserve> infoAboutAllProduct() {
+		return iReserve.infoAboutAllProduct();
 	}
 	public void addProduct(Reserve product) {
 		iReserve.addProduct(product);
