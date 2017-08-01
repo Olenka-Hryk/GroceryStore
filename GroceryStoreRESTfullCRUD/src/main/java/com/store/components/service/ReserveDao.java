@@ -5,10 +5,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.store.components.entity.Products;
 import com.store.components.entity.Reserve;
 import com.store.components.interface_i.IReserve;
 
@@ -61,10 +63,8 @@ public class ReserveDao implements IReserve {
 	/**
 	 * Select all information about products
 	 */
-	public List<Reserve> infoAboutProduct(int page) {
-		page *= 3;
-		final String SQL = "SELECT * FROM Reserve LIMIT 3 offset ?";
-		List<Reserve> products = jdbc.query(SQL, new workingWithRowMap(), page);
+	public List<Reserve> infoAboutAllProduct() {
+		List<Reserve> products = jdbc.query("SELECT * FROM Reserve", new BeanPropertyRowMapper(Reserve.class));
 		return products;
 	}
 
