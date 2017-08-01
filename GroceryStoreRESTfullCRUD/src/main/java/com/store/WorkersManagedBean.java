@@ -34,7 +34,7 @@ public class WorkersManagedBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		List<Workers> workers = getWorkersService().infoAboutWorker(0);
+		List<Workers> workers = getWorkersService().infoAboutAllWorker();
 		workersLazyModel = new WorkersLazyList(workers);
 	}
 
