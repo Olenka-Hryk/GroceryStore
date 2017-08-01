@@ -1,6 +1,6 @@
 package com.store.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +13,8 @@ public class OrdersService {
 	@Autowired
 	private IOrders iOrders;
 
-	public Collection<Orders> infoAboutAllOrder(int page) {
-		return iOrders.infoAboutAllOrder(page);
+	public List<Orders> infoAboutAllOrder() {
+		return iOrders.infoAboutAllOrder();
 	}
 
 	public Orders infoAboutSumOfOrderById(int id) {
