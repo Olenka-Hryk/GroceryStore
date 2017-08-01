@@ -33,7 +33,7 @@ public class StoreManagedBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		List<Store> store = getStoreService().infoAboutStore(0);
+		List<Store> store = getStoreService().infoAboutAllStore();
 		storeLazyModel = new StoreLazyList(store);
 	}
 
