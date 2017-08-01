@@ -1,6 +1,6 @@
 package com.store.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class TimeTableService {
 		return iTimeTable.searchByIdWorker(worker);
 	}
 
-	public Collection<TimeTable> infoAboutTimeTable(int page) {
-		return iTimeTable.infoAboutTimeTable(page);
+	public List<TimeTable> infoAboutAllTimeTable() {
+		return iTimeTable.infoAboutAllTimeTable();
 	}
 }
