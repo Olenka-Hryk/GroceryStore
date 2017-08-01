@@ -34,9 +34,9 @@ public class CustomersController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/information/{page}", method = RequestMethod.GET)
-	public Collection<Customers> infoAboutCustomer(@PathVariable("page") int page) {
-		return customersService.infoAboutCustomer(page);
+	@RequestMapping(value = "/information/all", method = RequestMethod.GET)
+	public Collection<Customers> infoAboutAllCustomer() {
+		return customersService.infoAboutAllCustomer();
 	}
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
