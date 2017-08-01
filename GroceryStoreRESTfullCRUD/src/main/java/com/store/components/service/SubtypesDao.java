@@ -2,7 +2,6 @@ package com.store.components.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +50,7 @@ public class SubtypesDao implements ISubtypes{
 	 * @param page
 	 * @return subtypes
 	 */
-	public Collection<Subtypes> infoAboutSubtype(int page) {
+	public List<Subtypes> infoAboutSubtype(int page) {
 		page *= 3;
 		final String SQL = "SELECT * FROM Subtypes LIMIT 3 offset ?";
 		List<Subtypes> subtypes = jdbc.query(SQL, new workingWithRowMap(), page);
@@ -60,9 +59,8 @@ public class SubtypesDao implements ISubtypes{
 
 	public void addSubtype(Subtypes subtype) {
 		final String SQL = "INSERT INTO Subtypes (NameSubtype) values (?) ";
-		final String nameSubtype = subtype.getName();
 
-		jdbc.update(SQL, new Object[] { nameSubtype });
+		jdbc.update(SQL, subtype.getName());
 	}
 
 }
