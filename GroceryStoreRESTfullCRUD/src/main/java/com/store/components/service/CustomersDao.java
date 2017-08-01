@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -55,16 +56,13 @@ public class CustomersDao implements ICustomers {
 	 * @param page
 	 * @return customers
 	 */
-	public List<Customers> infoAboutCustomer(int page) {
-		page *= 3;
-		final String SQL = "SELECT * FROM Customers LIMIT 3 offset ?";
-		List<Customers> customers = jdbc.query(SQL, new CustomersRowMapper(), page);
+	public List<Customers> infoAboutAllCustomer() {
+		List<Customers> customers = jdbc.query("SELECT * FROM Customers", new BeanPropertyRowMapper(Customers.class));
 		return customers;
 	}
 
 	public void addCustomer(Customers customer) {
 		final String SQL = "INSERT INTO Customers (SurnameCustomer, NameCustomer, MiddleNameCustomer, DateOfBirthCustomer, PhoneNumberCustomer, NumberCardCustomer, DiscountCustomer) values (?, ?, ?, ?, ?, ?, ?) ";	
-
 		jdbc.update(SQL, customer.getSurName(), customer.getName(), customer.getMiddleName(), customer.getDateBirth(), customer.getPhoneNumber(), customer.getNumberCard(), customer.getDiscountSale());
 	}
 }
