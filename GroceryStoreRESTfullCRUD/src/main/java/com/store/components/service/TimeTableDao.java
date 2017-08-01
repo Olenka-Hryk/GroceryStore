@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -53,10 +54,8 @@ public class TimeTableDao implements ITimeTable {
 	 * @param page
 	 * @return timetable
 	 */
-	public List<TimeTable> infoAboutTimeTable(int page) {
-		page *= 3;
-		final String SQL = "SELECT * FROM TimeTable LIMIT 3 offset ?";
-		List<TimeTable> timetable = jdbc.query(SQL, new workingWithRowMap(), page);
+	public List<TimeTable> infoAboutAllTimeTable() {
+		List<TimeTable> timetable = jdbc.query("SELECT * FROM TimeTable", new BeanPropertyRowMapper(TimeTable.class));
 		return timetable;
 	}
 }
