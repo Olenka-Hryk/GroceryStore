@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -50,10 +51,8 @@ public class StoreDao implements IStore{
 	 * @param page
 	 * @return store
 	 */
-	public List<Store> infoAboutStore(int page) {
-		page *= 3;
-		final String SQL = "SELECT * FROM Store LIMIT 3 offset ?";
-		List<Store> store = jdbc.query(SQL, new workingWithRowMap(), page);
+	public List<Store> infoAboutAllStore() {
+		List<Store> store = jdbc.query("SELECT * FROM Store", new BeanPropertyRowMapper(Store.class));
 		return store;
 	}
 
