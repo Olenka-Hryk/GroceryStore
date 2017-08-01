@@ -5,10 +5,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.store.components.entity.Store;
 import com.store.components.entity.Subtypes;
 import com.store.components.interface_i.ISubtypes;
 
@@ -50,10 +52,8 @@ public class SubtypesDao implements ISubtypes{
 	 * @param page
 	 * @return subtypes
 	 */
-	public List<Subtypes> infoAboutSubtype(int page) {
-		page *= 3;
-		final String SQL = "SELECT * FROM Subtypes LIMIT 3 offset ?";
-		List<Subtypes> subtypes = jdbc.query(SQL, new workingWithRowMap(), page);
+	public List<Subtypes> infoAboutAllSubtype() {
+		List<Subtypes> subtypes = jdbc.query("SELECT * FROM Subtypes", new BeanPropertyRowMapper(Subtypes.class));
 		return subtypes;
 	}
 
