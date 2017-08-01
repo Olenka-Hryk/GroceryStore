@@ -27,7 +27,7 @@ public class TimeTableManagedBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		List<TimeTable> timetable = getTimeTableService().infoAboutTimeTable(0);
+		List<TimeTable> timetable = getTimeTableService().infoAboutAllTimeTable();
 		timetableLazyModel = new TimeTableLazyList(timetable);
 	}
 
