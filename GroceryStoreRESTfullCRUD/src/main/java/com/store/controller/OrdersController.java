@@ -23,9 +23,9 @@ public class OrdersController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/{page}", method = RequestMethod.GET)
-	public Collection<Orders> infoAboutAllOrder(@PathVariable("page") int page) {
-		return orderService.infoAboutAllOrder(page);
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	public Collection<Orders> infoAboutAllOrder() {
+		return orderService.infoAboutAllOrder();
 	}
 
 	/**
