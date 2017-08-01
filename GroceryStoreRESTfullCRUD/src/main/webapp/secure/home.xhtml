@@ -1,0 +1,405 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Grocery Store</title>
+</h:head>
+<h:body>
+	<form action="${request.contextPath}/appLogout" method="POST">
+		<input type="submit" value="Logout" /> <input type="hidden"
+			name="${_csrf.parameterName}" value="${_csrf.token}" />
+	</form>
+	<h3>Welcome to the Grocery store ! =)</h3>
+	<h:form>
+
+		<p:dataTable id="lazyDataTableStore" lazy="true"
+			value="#{storeManagedBean.getAllStore()}" var="stores"
+			paginator="true" rows="5"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			<f:facet name="header">Stores</f:facet>
+			<p:column headerText="Id">
+				<h:outputText value="#{stores.id}" />
+			</p:column>
+			<p:column headerText="Address">
+				<h:outputText value="#{stores.address}" />
+			</p:column>
+		</p:dataTable>
+
+		<br></br>
+		<h:commandButton id="addStore" value="Add new Store"
+			onclick="target='_blank'" action="addStore.xhtml">
+		</h:commandButton>
+
+
+		<h3></h3>
+		<p:dataTable id="lazyDataTableCustomers" lazy="true"
+			value="#{customersManagedBean.getAllCustomers()}" var="customer"
+			paginator="true" rows="5"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			<f:facet name="header">Customers</f:facet>
+			<p:column headerText="Id" sortBy="#{customer.id}">
+				<h:outputText value="#{customer.id}" />
+			</p:column>
+			<p:column headerText="Surname">
+				<h:outputText value="#{customer.surName}" />
+			</p:column>
+			<p:column headerText="Name">
+				<h:outputText value="#{customer.name}" />
+			</p:column>
+			<p:column headerText="Middle name">
+				<h:outputText value="#{customer.middleName}" />
+			</p:column>
+			<p:column headerText="Data of birth">
+				<h:outputText value="#{customer.dateBirth}" />
+			</p:column>
+			<p:column headerText="Phone number">
+				<h:outputText value="#{customer.phoneNumber}" />
+			</p:column>
+			<p:column headerText="Number card">
+				<h:outputText value="#{customer.numberCard}" />
+			</p:column>
+			<p:column headerText="Discount sale">
+				<h:outputText value="#{customer.discountSale}" />
+			</p:column>
+		</p:dataTable>
+
+		<br></br>
+		<h:commandButton id="addCustomer" value="Add new Customer"
+			onclick="target='_blank'" action="addCustomer.xhtml">
+		</h:commandButton>
+
+		<h3></h3>
+		<p:dataTable id="lazyDataTableWorkers" lazy="true"
+			value="#{workersManagedBean.getAllWorkers()}" var="worker"
+			paginator="true" rows="5"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			<f:facet name="header">Workers</f:facet>
+			<p:column headerText="Id">
+				<h:outputText value="#{worker.id}" />
+			</p:column>
+			<p:column headerText="Surname">
+				<h:outputText value="#{worker.surName}" />
+			</p:column>
+			<p:column headerText="Name">
+				<h:outputText value="#{worker.name}" />
+			</p:column>
+			<p:column headerText="Middle name">
+				<h:outputText value="#{worker.middleName}" />
+			</p:column>
+			<p:column headerText="Data of birth">
+				<h:outputText value="#{worker.dateBirth}" />
+			</p:column>
+		</p:dataTable>
+
+		<br></br>
+		<h:commandButton id="addWorker" value="Add new Worker"
+			onclick="target='_blank'" action="addWorker.xhtml">
+		</h:commandButton>
+
+		<h3></h3>
+		<p:dataTable id="lazyDataTableTimeTable" lazy="true"
+			value="#{timeTableManagedBean.getAllTimeTable()}" var="timetable"
+			paginator="true" rows="5"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			<f:facet name="header">TimeTable</f:facet>
+			<p:column headerText="Id">
+				<h:outputText value="#{timetable.id}" />
+			</p:column>
+			<p:column headerText="Id worker">
+				<h:outputText value="#{timetable.idWorker}" />
+			</p:column>
+			<p:column headerText="Id store">
+				<h:outputText value="#{timetable.idStore}" />
+			</p:column>
+			<p:column headerText="Work date">
+				<h:outputText value="#{timetable.workDate}" />
+			</p:column>
+			<p:column headerText="Salary">
+				<h:outputText value="#{timetable.salary}" />
+			</p:column>
+		</p:dataTable>
+
+		<br></br>
+
+		<h3></h3>
+		<p:dataTable id="lazyDataTableSubtypes" lazy="true"
+			value="#{subtypeManagedBean.getAllSubtypes()}" var="subtype"
+			paginator="true" rows="5"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			<f:facet name="header">Subtypes</f:facet>
+			<p:column headerText="Id">
+				<h:outputText value="#{subtype.id}" />
+			</p:column>
+			<p:column headerText="Name">
+				<h:outputText value="#{subtype.name}" />
+			</p:column>
+		</p:dataTable>
+
+		<br></br>
+		<h:commandButton id="addSubtype" value="Add new Subtype"
+			onclick="target='_blank'" action="addSubtype.xhtml">
+		</h:commandButton>
+
+		<h3></h3>
+		<p:dataTable id="lazyDataTableProducts" lazy="true"
+			value="#{productsManagedBean.getAllProducts()}" var="product"
+			paginator="true" rows="5"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			<f:facet name="header">Products</f:facet>
+			<p:column headerText="Id">
+				<h:outputText value="#{product.id}" />
+			</p:column>
+			<p:column headerText="Id subtype">
+				<h:outputText value="#{product.idSubtype}" />
+			</p:column>
+			<p:column headerText="Name">
+				<h:outputText value="#{product.name}" />
+			</p:column>
+			<p:column headerText="Firm">
+				<h:outputText value="#{product.firm}" />
+			</p:column>
+		</p:dataTable>
+
+		<br></br>
+		<h:commandButton id="addProduct" value="Add new Product"
+			onclick="target='_blank'" action="addProduct.xhtml">
+		</h:commandButton>
+
+
+
+		<!--  ADD && DELETE && UPDATE by idProduct -->
+		<h3></h3>
+		<p:dataTable id="lazyDataTableReserve" lazy="true"
+			value="#{reserveManagedBean.getAllReserve()}" var="reserves"
+			paginator="true" rows="5"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" rowKey="#{reserves.id}"
+			selection="#{reserveManagedBean.selectedReserve}"
+			selectionMode="single" editable="true">
+			<p:ajax event="rowEdit" listener="#{reserveManagedBean.onRowEdit}"/>
+			<p:ajax event="rowEditCancel" listener="#{reserveManagedBean.onRowCancel}"/>
+			<f:facet name="header">Reserve</f:facet>
+			
+			<p:column headerText="Id">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{reserves.id}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput1" value="#{reserves.id}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="Id store">
+			<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{reserves.idStore}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput2" value="#{reserves.idStore}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="Id product">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{reserves.idProduct}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput3" value="#{reserves.idProduct}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="Expiration date">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{reserves.expirationDate}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput4" value="#{reserves.expirationDate}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="Quantity">
+					<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{reserves.quantity}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput5" value="#{reserves.quantity}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="Price">
+					<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{reserves.price}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput6" value="#{reserves.price}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="Barcode">
+					<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{reserves.barCode}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput7" value="#{reserves.barCode}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="Product size">
+					<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{reserves.productSize}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput8" value="#{reserves.productSize}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column>
+				<p:remoteCommand name="deleteReserve" update="msgs"
+					actionListener="#{reserveManagedBean.deleteReserve}" />
+				<p:growl id="msgs" showDetail="true" />
+				<p:commandButton value="Delete" type="button"
+					onclick="deleteReserve()" ajax="false" />
+			</p:column>
+			<p:column style="width:32px">
+				<p:rowEditor />
+			</p:column>
+		</p:dataTable>
+
+		<br></br>
+		<h:commandButton id="addReserve" value="Add" onclick="target='_blank'"
+			action="addReserve.xhtml">
+		</h:commandButton>
+		<!-- END -->
+
+
+		<h3></h3>
+		<p:dataTable id="lazyDataTableSale" lazy="true"
+			value="#{saleManagedBean.getAllSale()}" var="sales" paginator="true"
+			rows="5"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			<f:facet name="header">Sale</f:facet>
+			<p:column headerText="Id">
+				<h:outputText value="#{sales.id}" />
+			</p:column>
+			<p:column headerText="Id product">
+				<h:outputText value="#{sales.idProduct}" />
+			</p:column>
+			<p:column headerText="Percent">
+				<h:outputText value="#{sales.percent}" />
+			</p:column>
+			<p:column headerText="Name">
+				<h:outputText value="#{sales.nameSale}" />
+			</p:column>
+			<p:column headerText="Date start">
+				<h:outputText value="#{sales.dateStart}" />
+			</p:column>
+			<p:column headerText="Date finish">
+				<h:outputText value="#{sales.dateFinish}" />
+			</p:column>
+		</p:dataTable>
+
+		<br></br>
+		<h:commandButton id="addSale" value="Add new Sale"
+			onclick="target='_blank'" action="addSale.xhtml">
+		</h:commandButton>
+
+		<h3></h3>
+		<p:dataTable id="lazyDataTableOrders" lazy="true"
+			value="#{ordersManagedBean.getAllOrders()}" var="order"
+			paginator="true" rows="5"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			<f:facet name="header">Order</f:facet>
+			<p:column headerText="Id">
+				<h:outputText value="#{order.id}" />
+			</p:column>
+			<p:column headerText="Id sale">
+				<h:outputText value="#{order.idSale}" />
+			</p:column>
+			<p:column headerText="Id reserve">
+				<h:outputText value="#{order.idReserve}" />
+			</p:column>
+			<p:column headerText="Id worker">
+				<h:outputText value="#{order.idWorker}" />
+			</p:column>
+			<p:column headerText="TotalSum">
+				<h:outputText value="#{order.totalSum}" />
+			</p:column>
+		</p:dataTable>
+
+		<br></br>
+		<h:commandButton id="addOrder" value="Add new Order"
+			onclick="target='_blank'" action="addOrder.xhtml">
+		</h:commandButton>
+
+		<h3></h3>
+		<p:dataTable id="lazyDataTableCheque" lazy="true"
+			value="#{chequeManagedBean.getAllCheque()}" var="cheques"
+			paginator="true" rows="5"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			<f:facet name="header">Cheque</f:facet>
+			<p:column headerText="Id">
+				<h:outputText value="#{cheques.id}" />
+			</p:column>
+			<p:column headerText="Id reserve">
+				<h:outputText value="#{cheques.idReserve}" />
+			</p:column>
+			<p:column headerText="Id order">
+				<h:outputText value="#{cheques.idOrder}" />
+			</p:column>
+			<p:column headerText="Id customer">
+				<h:outputText value="#{cheques.idCustomer}" />
+			</p:column>
+			<p:column headerText="Id sale">
+				<h:outputText value="#{cheques.idSale}" />
+			</p:column>
+			<p:column headerText="Amount">
+				<h:outputText value="#{cheques.amount}" />
+			</p:column>
+			<p:column headerText="Order date">
+				<h:outputText value="#{cheques.orderDate}" />
+			</p:column>
+		</p:dataTable>
+
+		<br></br>
+		<h:commandButton id="addCheque" value="Add new Cheque"
+			onclick="target='_blank'" action="addCheque.xhtml">
+		</h:commandButton>
+
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</h:form>
+</h:body>
+</html>
