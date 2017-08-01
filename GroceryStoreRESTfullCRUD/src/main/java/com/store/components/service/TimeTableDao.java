@@ -2,7 +2,6 @@ package com.store.components.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +53,7 @@ public class TimeTableDao implements ITimeTable {
 	 * @param page
 	 * @return timetable
 	 */
-	public Collection<TimeTable> infoAboutTimeTable(int page) {
+	public List<TimeTable> infoAboutTimeTable(int page) {
 		page *= 3;
 		final String SQL = "SELECT * FROM TimeTable LIMIT 3 offset ?";
 		List<TimeTable> timetable = jdbc.query(SQL, new workingWithRowMap(), page);
