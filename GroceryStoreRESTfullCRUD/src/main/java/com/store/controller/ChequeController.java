@@ -23,9 +23,9 @@ public class ChequeController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/{page}", method = RequestMethod.GET)
-	public Collection<Cheque> infoAboutAllCheque(@PathVariable("page") int page) {
-		return chequeService.infoAboutAllCheque(page);
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	public Collection<Cheque> infoAboutAllCheque() {
+		return chequeService.infoAboutAllCheque();
 	}
 
 	/**
