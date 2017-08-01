@@ -1,6 +1,6 @@
 package com.store.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +13,8 @@ public class ChequeService {
 	@Autowired
 	private ICheque iCheque;
 
-	public Collection<Cheque> infoAboutAllCheque(int page) {
-		return iCheque.infoAboutAllCheque(page);
+	public List<Cheque> infoAboutAllCheque() {
+		return iCheque.infoAboutAllCheque();
 	}
 
 	public Cheque infoAboutAmountOfOrderById(int id) {
