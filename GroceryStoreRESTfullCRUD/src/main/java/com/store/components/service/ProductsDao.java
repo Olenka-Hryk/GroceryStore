@@ -2,7 +2,6 @@ package com.store.components.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +52,7 @@ public class ProductsDao implements IProducts{
 	 * @param page
 	 * @return products
 	 */
-	public Collection<Products> infoAboutProducts(int page) {
+	public List<Products> infoAboutProducts(int page) {
 		page *= 3;
 		final String SQL = "SELECT * FROM Products LIMIT 3 offset ?";
 		List<Products> products = jdbc.query(SQL, new workingWithRowMap(), page);
@@ -62,11 +61,7 @@ public class ProductsDao implements IProducts{
 
 	public void addProduct(Products product) {
 		final String SQL = "INSERT INTO Products (idSubtype, Name, Firm) values (?, ?, ?) ";
-		final int idSubtype = product.getIdSubtype();
-		final String name = product.getName();
-		final String firm = product.getFirm();
 		
-		jdbc.update(SQL, new Object[] { idSubtype, name, firm });
+		jdbc.update(SQL, product.getIdSubtype(), product.getName(), product.getFirm());
 	}
-
 }
