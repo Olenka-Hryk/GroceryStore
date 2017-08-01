@@ -34,8 +34,8 @@ public class TimeTableController {
 	 * @return
 	 */
 	@RequestMapping(value = "/information/{page}", method = RequestMethod.GET)
-	public Collection<TimeTable> infoAboutTimeTable(@PathVariable("page") int page) {
-		return timetableService.infoAboutTimeTable(page);
+	public Collection<TimeTable> infoAboutAllTimeTable() {
+		return timetableService.infoAboutAllTimeTable();
 	}
 }
 
