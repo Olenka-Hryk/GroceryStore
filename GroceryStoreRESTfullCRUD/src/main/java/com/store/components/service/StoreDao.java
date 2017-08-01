@@ -2,7 +2,6 @@ package com.store.components.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,18 +50,16 @@ public class StoreDao implements IStore{
 	 * @param page
 	 * @return store
 	 */
-	public Collection<Store> infoAboutStore(int page) {
-		page *= 2;
-		final String SQL = "SELECT * FROM Store LIMIT 2 offset ?";
+	public List<Store> infoAboutStore(int page) {
+		page *= 3;
+		final String SQL = "SELECT * FROM Store LIMIT 3 offset ?";
 		List<Store> store = jdbc.query(SQL, new workingWithRowMap(), page);
 		return store;
 	}
 
 	public void addStore(Store store) {
 		final String SQL = "INSERT INTO Store (Address) values (?) ";
-		final String address = store.getAddress();
 
-		jdbc.update(SQL, new Object[] { address });
+		jdbc.update(SQL, store.getAddress());
 	}
-
 }
