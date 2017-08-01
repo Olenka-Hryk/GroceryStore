@@ -34,9 +34,9 @@ public class SubtypesController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/information/{page}", method = RequestMethod.GET)
-	public Collection<Subtypes> infoAboutSubtype(@PathVariable("page") int page) {
-		return subtypesService.infoAboutSubtype(page);
+	@RequestMapping(value = "/information/all", method = RequestMethod.GET)
+	public Collection<Subtypes> infoAboutAllSubtype() {
+		return subtypesService.infoAboutAllSubtype();
 	}
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
