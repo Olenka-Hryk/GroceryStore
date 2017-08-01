@@ -33,7 +33,7 @@ public class ProductsManagedBean implements Serializable {
 	
 	@PostConstruct
 	public void init() {
-		List<Products> product = getProductsService().infoAboutProducts(0);
+		List<Products> product = getProductsService().infoAboutAllProducts();
 		productLazyModel = new ProductsLazyList(product);
 	}
 
