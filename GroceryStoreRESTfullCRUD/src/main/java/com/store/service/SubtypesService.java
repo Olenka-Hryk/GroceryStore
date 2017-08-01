@@ -1,6 +1,6 @@
 package com.store.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +18,8 @@ public class SubtypesService {
 		return iSubtypes.searchByIdSubtype(id);
 	}
 
-	public Collection<Subtypes> infoAboutSubtype(int page) {
-		return iSubtypes.infoAboutSubtype(page);
+	public List<Subtypes> infoAboutAllSubtype() {
+		return iSubtypes.infoAboutAllSubtype();
 	}
 
 	public void addSubtype(Subtypes subtype) {
