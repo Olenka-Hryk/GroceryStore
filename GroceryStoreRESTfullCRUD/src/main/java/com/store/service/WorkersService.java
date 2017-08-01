@@ -1,6 +1,6 @@
 package com.store.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +18,8 @@ public class WorkersService {
 		return iWorkers.searchByIdWorker(id);
 	}
 
-	public Collection<Workers> infoAboutWorker(int page) {
-		return iWorkers.infoAboutWorker(page);
+	public List<Workers> infoAboutAllWorker() {
+		return iWorkers.infoAboutAllWorker();
 	}
 
 	public void addWorker(Workers worker) {
