@@ -1,6 +1,6 @@
 package com.store.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +18,8 @@ public class ProductsService {
 		return iProducts.searchByIdProducts(id);
 	}
 
-	public Collection<Products> infoAboutProducts(int page) {
-		return iProducts.infoAboutProducts(page);
+	public List<Products> infoAboutAllProducts() {
+		return iProducts.infoAboutAllProducts();
 	}
 
 	public void addProduct(Products product) {
