@@ -2,7 +2,6 @@ package com.store.components.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ public class OrdersDao implements IOrders{
 		}
 	}
 	
-	public Collection<Orders> infoAboutAllOrder(int page) {
+	public List<Orders> infoAboutAllOrder(int page) {
 		page *= 3;
 		final String SQL = "SELECT * FROM Orders LIMIT 3 offset ?";
 		List<Orders> order = jdbc.query(SQL, new workingWithRowMap(), page);
@@ -58,13 +57,7 @@ public class OrdersDao implements IOrders{
 	
 	public void addOrder(Orders order) {
 		final String SQL = "INSERT INTO Orders (idSale, idReserve, idWorker, TotalSum) values (?, ?, ?, ?) ";
-		final int idSale = order.getIdSale();
-		final int idReserve = order.getIdReserve();	
-		final int idWorker = order.getIdWorker();
-		final float totalSum = order.getTotalSum();
 
-		jdbc.update(SQL, new Object[] { idSale, idReserve, idWorker, totalSum });
+		jdbc.update(SQL,order.getIdSale(), order.getIdReserve(), order.getIdWorker(), order.getTotalSum());
 	}
-
-
 }
