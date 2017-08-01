@@ -33,7 +33,7 @@ public class SubtypeManagedBean implements Serializable {
 	
 	@PostConstruct
 	public void init() {
-		List<Subtypes> subtypes = getSubtypesService().infoAboutSubtype(0);
+		List<Subtypes> subtypes = getSubtypesService().infoAboutAllSubtype();
 		subtypesLazyModel = new SubtypeLazyList(subtypes);
 	}
 
