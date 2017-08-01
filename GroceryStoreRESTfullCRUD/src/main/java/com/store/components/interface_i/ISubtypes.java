@@ -1,12 +1,12 @@
 package com.store.components.interface_i;
 
-import java.util.Collection;
+import java.util.List;
 
 import com.store.components.entity.Subtypes;
 
 public interface ISubtypes {
 	public Subtypes searchByIdSubtype(int id);
 
-	Collection<Subtypes> infoAboutSubtype(int page);
+	List<Subtypes> infoAboutAllSubtype();
 	public void addSubtype(Subtypes subtype);
 }
