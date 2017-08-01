@@ -35,7 +35,7 @@ public class WorkersController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/information/{page}", method = RequestMethod.GET)
+	@RequestMapping(value = "/information/all", method = RequestMethod.GET)
 	public List<Workers> infoAboutAllWorker() {
 		return workersService.infoAboutAllWorker();
 	}
