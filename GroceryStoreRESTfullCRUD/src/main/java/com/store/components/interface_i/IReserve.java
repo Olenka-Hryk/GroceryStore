@@ -1,13 +1,13 @@
 package com.store.components.interface_i;
 
-import java.util.Collection;
+import java.util.List;
 
 import com.store.components.entity.Reserve;
 
 public interface IReserve {
 	public Reserve searchByIdProduct(int id);
 	
-	Collection<Reserve> infoAboutProduct(int page);
+	List<Reserve> infoAboutAllProduct();
 
 	public void addProduct(Reserve product);
 	
