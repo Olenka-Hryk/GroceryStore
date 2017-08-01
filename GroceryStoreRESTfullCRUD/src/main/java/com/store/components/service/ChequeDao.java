@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -38,11 +39,9 @@ public class ChequeDao implements ICheque{
 		}
 	}
 	
-	public List<Cheque> infoAboutAllCheque(int page) {
-		page *= 3;
-		final String SQL = "SELECT * FROM Cheque LIMIT 3 offset ?";
-		List<Cheque> cheque = jdbc.query(SQL, new workingWithRowMap(), page);
-		return cheque;
+	public List<Cheque> infoAboutAllCheque() {
+		List<Cheque> cheque = jdbc.query("SELECT * FROM Cheque", new BeanPropertyRowMapper(Cheque.class));
+		 return cheque;
 	}
 	
 	/**
