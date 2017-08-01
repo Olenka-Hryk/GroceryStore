@@ -33,7 +33,7 @@ public class ChequeManagedBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		List<Cheque> cheque = getChequeService().infoAboutAllCheque(0);
+		List<Cheque> cheque = getChequeService().infoAboutAllCheque();
 		chequeLazyModel = new ChequeLazyList(cheque);
 	}
 
