@@ -1,12 +1,13 @@
 package com.store.components.interface_i;
 
-import java.util.Collection;
+import java.util.List;
 import com.store.components.entity.Workers;
 
 public interface IWorkers {
-	public Workers searchByIdWorker(int id);
 
-	Collection<Workers> infoAboutWorker(int page);
+	Workers searchByIdWorker(int id);
 
-	public void addWorker(Workers worker);
+	List<Workers> infoAboutAllWorker();
+
+	void addWorker(Workers worker);
 }
