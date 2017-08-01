@@ -1,6 +1,6 @@
 package com.store.controller;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +15,7 @@ import com.store.service.WorkersService;
 @RestController
 @RequestMapping("/store/workers")
 public class WorkersController {
+	
 	@Autowired
 	private WorkersService workersService;
 
@@ -35,8 +36,8 @@ public class WorkersController {
 	 * @return
 	 */
 	@RequestMapping(value = "/information/{page}", method = RequestMethod.GET)
-	public Collection<Workers> infoAboutWorker(@PathVariable("page") int page) {
-		return workersService.infoAboutWorker(page);
+	public List<Workers> infoAboutAllWorker() {
+		return workersService.infoAboutAllWorker();
 	}
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
