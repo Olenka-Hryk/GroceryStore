@@ -1,6 +1,4 @@
 package com.store;
-
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -37,7 +35,7 @@ public class ReserveManagedBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		List<Reserve> reserve = getReserveService().infoAboutProduct(0);
+		List<Reserve> reserve = getReserveService().infoAboutAllProduct();
 		reserveLazyModel = new ReserveLazyList(reserve);
 	}
 
