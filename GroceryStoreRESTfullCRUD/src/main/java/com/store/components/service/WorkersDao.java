@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -53,10 +54,8 @@ public class WorkersDao implements IWorkers{
 	 * @param page
 	 * @return workers
 	 */
-	public List<Workers> infoAboutWorker(int page) {
-		page *= 3;
-		final String SQL = "SELECT * FROM Workers LIMIT 3 offset ?";
-		List<Workers> workers = jdbc.query(SQL, new workingWithRowMap(), page);
+	public List<Workers> infoAboutAllWorker() {
+		List<Workers> workers = jdbc.query("SELECT * FROM Workers", new BeanPropertyRowMapper(Workers.class));
 		return workers;
 	}
 
