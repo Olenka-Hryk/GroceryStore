@@ -5,10 +5,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.store.components.entity.Orders;
 import com.store.components.entity.Products;
 import com.store.components.interface_i.IProducts;
 
@@ -52,10 +54,8 @@ public class ProductsDao implements IProducts{
 	 * @param page
 	 * @return products
 	 */
-	public List<Products> infoAboutProducts(int page) {
-		page *= 3;
-		final String SQL = "SELECT * FROM Products LIMIT 3 offset ?";
-		List<Products> products = jdbc.query(SQL, new workingWithRowMap(), page);
+	public List<Products> infoAboutAllProducts() {
+		List<Products> products = jdbc.query("SELECT * FROM Products", new BeanPropertyRowMapper(Products.class));
 		return products;
 	}
 
