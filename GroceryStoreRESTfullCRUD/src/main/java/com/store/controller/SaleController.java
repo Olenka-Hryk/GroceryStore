@@ -34,9 +34,9 @@ public class SaleController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/information/{page}", method = RequestMethod.GET)
-	public Collection<Sale> infoAboutSale(@PathVariable("page") int page) {
-		return saleService.infoAboutSale(page);
+	@RequestMapping(value = "/information/all", method = RequestMethod.GET)
+	public Collection<Sale> infoAboutAllSale() {
+		return saleService.infoAboutAllSale();
 	}
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
