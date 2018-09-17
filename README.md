@@ -1,5 +1,5 @@
 # GroceryStore
-Realization RESTfull CRUD for model of grocery store.
+Realization RESTful CRUD for model of grocery store.
 
 
 Essences:
